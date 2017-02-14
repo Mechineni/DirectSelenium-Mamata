@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="suite of suites">
-    <test name="TotalExecution">
+    <test name="TestXml">
         <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="LocalTestCases.LandingPageTC">

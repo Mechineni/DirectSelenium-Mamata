@@ -2,14 +2,16 @@ package PageObject;
 
 import GenericLib.ActionKeywords;
 import GenericLib.ObjectRepository;
+import jxl.write.WriteException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
 
-import static GenericLib.ActionKeywords.VerifyElementExistence;
-import static GenericLib.ActionKeywords.clickOnElement;
-import static GenericLib.ActionKeywords.sendInputData;
+import static GenericLib.ActionKeywords.*;
+import static GenericLib.DataDriven.ActualLable;
+import static GenericLib.DataDriven.ExpectedLable;
+import static GenericLib.DataDriven.StepLable;
 
 
 /**
@@ -26,13 +28,24 @@ public class LandingPage {
 
 
 
-    public static void LogInFunctionality(WebDriver driver) throws InterruptedException, IOException {
+    public static void LogInFunctionality(WebDriver driver) throws InterruptedException, IOException, WriteException {
+        StepLable("Log in to the application");
         obje.repository(driver);
-        if(VerifyElementExistence(driver,EmailIdField).size()>0) {
+        ExpectedLable("Check Landing page is loaded or not ?");
+        if(SizeOfTheElement(driver,EmailIdField)>0) {
+            ActualLable("Landing page is loaded properly","Pass");
+            ExpectedLable("Provide User name in Email id field");
             sendInputData(driver,EmailIdField).sendKeys(obje.obj.getProperty("email"));
+            ActualLable("User name entered successfully, Email id is : "+obje.obj.getProperty("email"),"Pass");
+            ExpectedLable("Provide Password in Password field");
             sendInputData(driver,PasswordField).sendKeys(obje.obj.getProperty("password"));
-            Thread.sleep(1000);
+            ActualLable("Password entered successfully, Password is : " +obje.obj.getProperty("password"),"Pass");
+            waitForOneSec();
+            ExpectedLable("Now Click on Login button");
             clickOnElement(driver,LogInButton);
-        }else{}
+            ActualLable("Successfully clicked on Log in button","Pass");
+        }else{ActualLable("Failed to load Landing page","Fail");}
     }
+
+
 }

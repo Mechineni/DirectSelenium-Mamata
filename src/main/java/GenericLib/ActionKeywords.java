@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class ActionKeywords {
     private static WebDriver driver;
-    public static void navigate(WebDriver driver,String object){
-            driver.get("");
+    public static void navigateTo(WebDriver driver,String url){
+            driver.navigate().to(url);
     }
     public static void clickOnElement(WebDriver driver,By object) {
         driver.findElement(object).click();
@@ -28,10 +28,10 @@ public class ActionKeywords {
         WebElement elementNam = driver.findElement(object);
             return elementNam;
     }
-    public static void waitForOneSec() throws Exception{
+    public static void waitForOneSec() throws InterruptedException {
             Thread.sleep(1000);
     }
-    public static List<WebElement> VerifyElementExistence(WebDriver driver,By object){
+    public static List<WebElement> GetMultipleElementList(WebDriver driver,By object){
         List<WebElement> NoOfElements = driver.findElements(object);
         return NoOfElements;
     }
