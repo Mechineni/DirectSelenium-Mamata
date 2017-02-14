@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static GenericLib.ObjectRepository.TimeConstatnt;
+import static GenericLib.ObjectRepository.TimeSt;
 
 
 public class DataDriven {
@@ -143,7 +144,7 @@ public class DataDriven {
 		wsheet.addCell(new Label(0 , i , resu, cellFormat));
 		counting=1;
 	}
-public static int numberForColumn;
+	public static int numberForColumn;
 	public static void ExpectedLable(String resu) throws IOException, WriteException {
 		numberForColumn= DataDriven();
 		wsheet = wbook.getSheet("ResultSheet");
@@ -206,7 +207,8 @@ public static int numberForColumn;
 	}
 	static String ScID;
 	static int ReportStartNumber;
-	public static void ReportStartup(int j) throws IOException, WriteException, BiffException {
+	public static void ReportStartup() throws IOException, WriteException, BiffException {
+		int j =TestCaseNum;
 		//int k = DataDriven();DataDriven1();DataDriven2();DataDriven3();DataDriven4();
 		int k = DataDriven();
 		ScID= ReadTestCases(TestCasesheet).getCell(0,j).getContents();
@@ -321,6 +323,27 @@ public static int numberForColumn;
 		sheet1 = book1.getSheet("Sheet1");
 		return sheet1;
 	}
-
-
+	public static int GetColumnNumber(String TcNO) throws IOException, WriteException, BiffException {
+		int NoOfRows = ReadTestCases(TestCasesheet).getRows();
+		System.out.println(TimeSt());
+		int RN = 0;
+		for(int i=0;i<=NoOfRows;i++) {
+			String ScI = ReadTestCases(TestCasesheet).getCell(0, i).getContents();
+			if(ScI.contentEquals(TcNO)){
+				RN =i;
+				System.out.println(TimeSt());
+				String ScName = ReadTestCases(TestCasesheet).getCell(3, i).getContents();
+				break;
+			}
+		}
+		return RN;
+	}
+	public static int TestCaseNum;
+	public static String CheckingFlag(String TcN) throws IOException, WriteException, BiffException {
+		TestCaseNum = GetColumnNumber(TcN);
+		ScID= ReadTestCases(TestCasesheet).getCell(0,TestCaseNum).getContents();
+		String ScName= ReadTestCases(TestCasesheet).getCell(3,TestCaseNum).getContents();
+		if(ScName.contentEquals("Yes")){DataDriven.ReportStartup();}
+		return ScName;
+	}
 }
