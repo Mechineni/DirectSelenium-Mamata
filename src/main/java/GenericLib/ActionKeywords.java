@@ -28,9 +28,11 @@ public class ActionKeywords {
         WebElement elementNam = driver.findElement(object);
             return elementNam;
     }
-    public static void waitForOneSec() throws InterruptedException {
-            Thread.sleep(1000);
-    }
+    public static void waitForOneSec() throws InterruptedException  {   Thread.sleep(1000);   }
+    public static void waitForTwoSec() throws InterruptedException  {   Thread.sleep(2000);   }
+    public static void waitForThreeSec() throws InterruptedException{   Thread.sleep(3000);   }
+    public static void waitForFiveSec() throws InterruptedException {   Thread.sleep(5000);   }
+
     public static List<WebElement> GetMultipleElementList(WebDriver driver,By object){
         List<WebElement> NoOfElements = driver.findElements(object);
         return NoOfElements;

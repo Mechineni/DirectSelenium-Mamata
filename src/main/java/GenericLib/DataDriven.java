@@ -207,8 +207,7 @@ public class DataDriven {
 	}
 	static String ScID;
 	static int ReportStartNumber;
-	public static void ReportStartup() throws IOException, WriteException, BiffException {
-		int j =TestCaseNum;
+	public static void ReportStartup(int j) throws IOException, WriteException, BiffException {
 		//int k = DataDriven();DataDriven1();DataDriven2();DataDriven3();DataDriven4();
 		int k = DataDriven();
 		ScID= ReadTestCases(TestCasesheet).getCell(0,j).getContents();
@@ -325,25 +324,25 @@ public class DataDriven {
 	}
 	public static int GetColumnNumber(String TcNO) throws IOException, WriteException, BiffException {
 		int NoOfRows = ReadTestCases(TestCasesheet).getRows();
-		System.out.println(TimeSt());
 		int RN = 0;
+		System.out.println(TimeSt());
 		for(int i=0;i<=NoOfRows;i++) {
 			String ScI = ReadTestCases(TestCasesheet).getCell(0, i).getContents();
 			if(ScI.contentEquals(TcNO)){
 				RN =i;
-				System.out.println(TimeSt());
 				String ScName = ReadTestCases(TestCasesheet).getCell(3, i).getContents();
+				System.out.println(TimeSt());
 				break;
 			}
 		}
 		return RN;
 	}
-	public static int TestCaseNum;
+
 	public static String CheckingFlag(String TcN) throws IOException, WriteException, BiffException {
-		TestCaseNum = GetColumnNumber(TcN);
+		int TestCaseNum = GetColumnNumber(TcN);
 		ScID= ReadTestCases(TestCasesheet).getCell(0,TestCaseNum).getContents();
 		String ScName= ReadTestCases(TestCasesheet).getCell(3,TestCaseNum).getContents();
-		if(ScName.contentEquals("Yes")){DataDriven.ReportStartup();}
+		if(ScName.contentEquals("Yes")){DataDriven.ReportStartup(TestCaseNum);}
 		return ScName;
 	}
 }

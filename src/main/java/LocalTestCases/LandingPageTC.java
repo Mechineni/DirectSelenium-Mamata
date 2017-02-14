@@ -27,19 +27,38 @@ public class LandingPageTC extends Browser {
 
 
     @BeforeClass
-    public void setUp() throws WriteException, IOException, BiffException {
-        driver = getDriver();
-    }
+    public void setUp() throws WriteException, IOException, BiffException {  driver = getDriver();  }
+
+
     @Test
-    public void LocalExecutionMethod() throws IOException, InterruptedException, WriteException, BiffException {
+    public void LocalExecutionMethod0() throws IOException, InterruptedException, WriteException, BiffException {
         try {
-            if (DataDriven.CheckingFlag("WS_TC_212").contentEquals("Yes")) {
+            if (DataDriven.CheckingFlag("WS_TC_10").contentEquals("Yes")) {
                 LandingPage.LogInFunctionality(driver);
                 HomePage.VerifyHomePageAssert(driver);
             }
         }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
         catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
     }
-
+    @Test
+    public void LocalExecutionMethod() throws IOException, InterruptedException, WriteException, BiffException {
+        try {
+            if (DataDriven.CheckingFlag("WS_TC_100").contentEquals("Yes")) {
+                LandingPage.LogInFunctionality(driver);
+                HomePage.VerifyHomePageAssert(driver);
+            }
+        }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
+        catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
+    }
+    @Test
+    public void LocalExecutionMethod1() throws IOException, InterruptedException, WriteException, BiffException {
+        try {
+            if (DataDriven.CheckingFlag("WS_TC_161").contentEquals("Yes")) {
+                LandingPage.LogInFunctionality(driver);
+                HomePage.VerifyHomePageAssert(driver);
+            }
+        }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
+        catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
+    }
 
 }
