@@ -120,6 +120,17 @@ public class DataDriven {
 		cellFormat.setAlignment(Alignment.CENTRE);
 		return cellFormat;
 	}
+	public static WritableCellFormat CellFormat4() throws WriteException {
+		//int counted = 14;
+		WritableCellFormat cellFormat = null;
+		WritableFont cellFont = null;
+		cellFont = new WritableFont(WritableFont.ARIAL, 9,WritableFont.BOLD);
+		cellFormat = new WritableCellFormat(cellFont);
+		cellFormat.setWrap(true);
+		cellFormat.setBorder(Border.ALL, BorderLineStyle.THIN);
+		return cellFormat;
+	}
+
 	static int counting=1;
 	public static void StepLable(String resu) throws IOException, WriteException {
 		//int i = DataDriven();DataDriven1();DataDriven2();DataDriven3();DataDriven4();
@@ -224,7 +235,7 @@ public class DataDriven {
 		wsheet.addCell(new Label(4 , 3, "QA2 / "+Browser.BrowserNameForSuite,CellFormat1()));
 		wsheet.addHyperlink(hlk);
 		wsheet.addCell(new Label(0 , ReportStartNumber, ScID,CellFormat1()));
-		wsheet.addCell(new Label(1 , ReportStartNumber, ScName, CellFormat()));
+		wsheet.addCell(new Label(1 , ReportStartNumber, ScName, CellFormat4()));
 		wsheet.addCell(new Label(2 , ReportStartNumber, ScDis, CellFormat()));
 		counting=1;
 	}
@@ -336,7 +347,9 @@ public class DataDriven {
 		int TestCaseNum = GetColumnNumber(TcN);
 		ScID= ReadTestCases(TestCasesheet).getCell(0,TestCaseNum).getContents();
 		String ScName= ReadTestCases(TestCasesheet).getCell(3,TestCaseNum).getContents();
-		if(ScName.contentEquals("Yes")){status= true;DataDriven.ReportStartup(TestCaseNum);}
+		if(ScName.contentEquals("Yes")){
+			status= true; DataDriven.ReportStartup(TestCaseNum);
+		}
 		TestDataSheet=TcN;
 		return status;
 	}
