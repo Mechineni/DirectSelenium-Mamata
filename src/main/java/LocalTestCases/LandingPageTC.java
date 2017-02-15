@@ -31,34 +31,15 @@ public class LandingPageTC extends Browser {
 
 
     @Test
-    public void LocalExecutionMethod0() throws IOException, InterruptedException, WriteException, BiffException {
+    public void SC_001() throws IOException, InterruptedException, WriteException, BiffException {
         try {
-            if (DataDriven.CheckingFlag("SC_001").contentEquals("Yes")) {
+            if (DataDriven.CheckingFlag("SC_001")==true) {
                 LandingPage.LogInFunctionality(driver);
                 HomePage.VerifyHomePageAssert(driver);
             }
         }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
         catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
     }
-    @Test
-    public void LocalExecutionMethod() throws IOException, InterruptedException, WriteException, BiffException {
-        try {
-            if (DataDriven.CheckingFlag("WS_TC_100").contentEquals("Yes")) {
-                LandingPage.LogInFunctionality(driver);
-                HomePage.VerifyHomePageAssert(driver);
-            }
-        }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
-        catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
-    }
-    @Test
-    public void LocalExecutionMethod1() throws IOException, InterruptedException, WriteException, BiffException {
-        try {
-            if (DataDriven.CheckingFlag("WS_TC_161").contentEquals("Yes")) {
-                LandingPage.LogInFunctionality(driver);
-                HomePage.VerifyHomePageAssert(driver);
-            }
-        }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
-        catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
-    }
+
 
 }

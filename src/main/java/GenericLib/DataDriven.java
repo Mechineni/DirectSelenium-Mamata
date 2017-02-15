@@ -319,10 +319,10 @@ public class DataDriven {
 		int RN = 0;
 		System.out.println(TimeSt());
 		for(int i=0;i<=NoOfRows;i++) {
-			String ScI = ReadTestCases(TestCasesheet).getCell(1, i).getContents();
+			String ScI = ReadTestCases(TestCasesheet).getCell(0, i).getContents();
 			if(ScI.contentEquals(TcNO)){
 				RN =i;
-				String ScName = ReadTestCases(TestCasesheet).getCell(4, i).getContents();
+				String ScName = ReadTestCases(TestCasesheet).getCell(3, i).getContents();
 				System.out.println(TimeSt());
 				break;
 			}
@@ -330,13 +330,14 @@ public class DataDriven {
 		return RN;
 	}
 	private static String TestDataSheet;
-	public static String CheckingFlag(String TcN) throws IOException, WriteException, BiffException {
+	public static boolean CheckingFlag(String TcN) throws IOException, WriteException, BiffException {
+		boolean status = false;
 		int TestCaseNum = GetColumnNumber(TcN);
-		ScID= ReadTestCases(TestCasesheet).getCell(1,TestCaseNum).getContents();
-		String ScName= ReadTestCases(TestCasesheet).getCell(4,TestCaseNum).getContents();
-		if(ScName.contentEquals("Yes")){DataDriven.ReportStartup(TestCaseNum);}
+		ScID= ReadTestCases(TestCasesheet).getCell(0,TestCaseNum).getContents();
+		String ScName= ReadTestCases(TestCasesheet).getCell(3,TestCaseNum).getContents();
+		if(ScName.contentEquals("Yes")){status= true;DataDriven.ReportStartup(TestCaseNum);}
 		TestDataSheet=TcN;
-		return ScName;
+		return status;
 	}
 	public static Sheet TestDataSheet() throws BiffException, IOException, WriteException {
 		obr.repository(driver);
