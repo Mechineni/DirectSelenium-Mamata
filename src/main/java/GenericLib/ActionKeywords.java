@@ -45,4 +45,8 @@ public class ActionKeywords {
         String PageTitle=driver.getTitle();
         return PageTitle;
     }
+    public static String GetElementText(WebDriver driver,By object) {
+        String ElementText=driver.findElement(object).getText();
+        return ElementText;
+    }
 }
