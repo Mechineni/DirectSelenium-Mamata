@@ -127,11 +127,11 @@ public class DataDriven {
 		wsheet = wbook.getSheet("ResultSheet");
 		WritableCellFormat cellFormat = null;
 		WritableFont cellFont = null;
-		cellFont = new WritableFont(WritableFont.ARIAL, 9);
+		cellFont = new WritableFont(WritableFont.ARIAL,9,WritableFont.BOLD);
 		cellFormat = new WritableCellFormat(cellFont);
 		cellFormat.setWrap(true);
 		cellFormat.setBorder(Border.ALL, BorderLineStyle.MEDIUM);
-		cellFormat.setBackground(Colour.PERIWINKLE);
+		cellFormat.setBackground(Colour.GREY_40_PERCENT);
 		wsheet.mergeCells(0, i, 4, i);
 		wsheet.addCell(new Label(0 , i , resu, cellFormat));
 		counting=1;
@@ -208,11 +208,12 @@ public class DataDriven {
 		String text = ScID+" : "+ScName;
 		WritableCellFormat cellFormat = null;
 		WritableFont cellFont = null;
-		cellFont = new WritableFont(WritableFont.ARIAL, 9);
+		cellFont = new WritableFont(WritableFont.ARIAL, 9);//WritableFont.BOLD
+		cellFont.setColour(Colour.WHITE);
 		cellFormat = new WritableCellFormat(cellFont);
 		cellFormat.setWrap(true);
 		cellFormat.setBorder(Border.ALL, BorderLineStyle.MEDIUM);
-		cellFormat.setBackground(Colour.PINK);
+		cellFormat.setBackground(Colour.AQUA);
 		wsheet = wbook.getSheet("ResultSheet");
 		wsheet.mergeCells(0, k, 4, k);
 		wsheet.addCell(new Label(0 , k , text, cellFormat));
