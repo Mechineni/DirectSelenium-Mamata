@@ -21,7 +21,6 @@ public class LandingPage {
     static private ObjectRepository obje = new ObjectRepository();
     static private WebDriver driver;
     //PageElements
-    static private By LoginTitle = By.id("Login");
     static private By EmailIdField = By.id("UserName");
     static private By PasswordField = By.id("Password");
     static private By LogInButton = By.xpath("//input[@value='Login'][@type='SUBMIT']");
@@ -29,25 +28,11 @@ public class LandingPage {
 
 
 
-
-    public static boolean VerifyLandingPageAssert(WebDriver driver) throws InterruptedException, IOException, WriteException {
-        boolean Status = false;
-        ExpectedLable("Verify that Landing ia opened or not ?");
-        if(SizeOfTheElement(driver,LoginTitle)>0) {
-            String PageTitle = GetPageTitle(driver);
-            if(PageTitle.contentEquals("User Authentication")){
-                Status=true;
-                ActualLable("successfully verified Assert for Landing Page ","Pass");
-            }else{ActualLable(" Assert verification failed for Landing Page ","Fail");}
-        }else{ActualLable("Landing page is not Loaded Properly","Fail");}
-        return Status;
-    }
-
     public static void LogInFunctionality(WebDriver driver) throws InterruptedException, IOException, WriteException {
         StepLable("Log in to the application");
         obje.repository(driver);
         ExpectedLable("Check Landing page is loaded or not ?");
-        if(VerifyLandingPageAssert(driver)==true) {
+        if(SizeOfTheElement(driver,EmailIdField)>0) {
             ActualLable("Landing page is loaded properly","Pass");
             ExpectedLable("Provide User name in Email id field");
             sendInputData(driver,EmailIdField).sendKeys(obje.obj.getProperty("email"));

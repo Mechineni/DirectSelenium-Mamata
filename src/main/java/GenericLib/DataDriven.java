@@ -77,7 +77,7 @@ public class DataDriven {
 	public static Sheet ReadTestCases(Sheet TestCasesheet) throws BiffException, IOException, WriteException {
 		obr.repository(driver);
 		TestCaseBook = Workbook.getWorkbook(new File(obr.obj.getProperty("testData2")));
-		TestCasesheet = TestCaseBook.getSheet("TestCases");
+		TestCasesheet = TestCaseBook.getSheet("Scenarios");
 		return TestCasesheet;
 	}
 
@@ -88,24 +88,16 @@ public class DataDriven {
 		return wsheet;
 	}
 	private static final AtomicInteger count = new AtomicInteger(3);
-	private static final AtomicInteger count1 = new AtomicInteger(3);
-	private static final AtomicInteger count2 = new AtomicInteger(3);
-	private static final AtomicInteger count3 = new AtomicInteger(3);
-	private static final AtomicInteger count4 = new AtomicInteger(3);
 	private static final AtomicInteger count5 = new AtomicInteger(6);
-	private static final AtomicInteger count6 = new AtomicInteger(6);
 
 	public static int DataDriven(){
-		//int counted = 14;
 		int expcounted = count.incrementAndGet();
 		return expcounted;
 	}
 	public static int DataDriven5(){
-		//int counted = 14;
 		int Actucounted = count5.incrementAndGet();
 		return Actucounted;
 	}
-
 
 	public static WritableCellFormat CellFormat() throws WriteException {
 		//int counted = 14;
@@ -327,22 +319,29 @@ public class DataDriven {
 		int RN = 0;
 		System.out.println(TimeSt());
 		for(int i=0;i<=NoOfRows;i++) {
-			String ScI = ReadTestCases(TestCasesheet).getCell(0, i).getContents();
+			String ScI = ReadTestCases(TestCasesheet).getCell(1, i).getContents();
 			if(ScI.contentEquals(TcNO)){
 				RN =i;
-				String ScName = ReadTestCases(TestCasesheet).getCell(3, i).getContents();
+				String ScName = ReadTestCases(TestCasesheet).getCell(4, i).getContents();
 				System.out.println(TimeSt());
 				break;
 			}
 		}
 		return RN;
 	}
-
+	private static String TestDataSheet;
 	public static String CheckingFlag(String TcN) throws IOException, WriteException, BiffException {
 		int TestCaseNum = GetColumnNumber(TcN);
-		ScID= ReadTestCases(TestCasesheet).getCell(0,TestCaseNum).getContents();
-		String ScName= ReadTestCases(TestCasesheet).getCell(3,TestCaseNum).getContents();
+		ScID= ReadTestCases(TestCasesheet).getCell(1,TestCaseNum).getContents();
+		String ScName= ReadTestCases(TestCasesheet).getCell(4,TestCaseNum).getContents();
 		if(ScName.contentEquals("Yes")){DataDriven.ReportStartup(TestCaseNum);}
+		TestDataSheet=TcN;
 		return ScName;
+	}
+	public static Sheet TestDataSheet() throws BiffException, IOException, WriteException {
+		obr.repository(driver);
+		TestCaseBook = Workbook.getWorkbook(new File(obr.obj.getProperty("testData3")));
+		Sheet TestCasesheet = TestCaseBook.getSheet(TestDataSheet);
+		return TestCasesheet;
 	}
 }
