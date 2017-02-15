@@ -53,4 +53,8 @@ public class ActionKeywords {
         action.moveToElement(we).moveToElement(we2).click().build().perform();
     }
 
+    public static String GetElementText(WebDriver driver,By object) {
+        String ElementText=driver.findElement(object).getText();
+        return ElementText;
+    }
 }
