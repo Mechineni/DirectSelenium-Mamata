@@ -2,6 +2,7 @@ package PageObject;
 
 import GenericLib.ActionKeywords;
 import GenericLib.ObjectRepository;
+import jxl.read.biff.BiffException;
 import jxl.write.WriteException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +10,7 @@ import org.openqa.selenium.WebDriver;
 import java.io.IOException;
 
 import static GenericLib.ActionKeywords.*;
-import static GenericLib.DataDriven.ActualLable;
-import static GenericLib.DataDriven.ExpectedLable;
-import static GenericLib.DataDriven.StepLable;
+import static GenericLib.DataDriven.*;
 
 
 /**
@@ -28,17 +27,17 @@ public class LandingPage {
 
 
 
-    public static void LogInFunctionality(WebDriver driver) throws InterruptedException, IOException, WriteException {
+    public static void LogInFunctionality(WebDriver driver) throws InterruptedException, IOException, WriteException, BiffException {
         StepLable("Log in to the application");
         obje.repository(driver);
         ExpectedLable("Check Landing page is loaded or not ?");
         if(SizeOfTheElement(driver,EmailIdField)>0) {
             ActualLable("Landing page is loaded properly","Pass");
             ExpectedLable("Provide User name in Email id field");
-            sendInputData(driver,EmailIdField).sendKeys(obje.obj.getProperty("email"));
+            sendInputData(driver,EmailIdField).sendKeys(TestDataSheet().getCell(3,1).getContents());
             ActualLable("User name entered successfully, Email id is : "+obje.obj.getProperty("email"),"Pass");
             ExpectedLable("Provide Password in Password field");
-            sendInputData(driver,PasswordField).sendKeys(obje.obj.getProperty("password"));
+            sendInputData(driver,PasswordField).sendKeys(TestDataSheet().getCell(4,1).getContents());
             ActualLable("Password entered successfully, Password is : " +obje.obj.getProperty("password"),"Pass");
             waitForOneSec();
             ExpectedLable("Now Click on Login button");

@@ -33,7 +33,7 @@ public class LandingPageTC extends Browser {
     @Test
     public void LocalExecutionMethod0() throws IOException, InterruptedException, WriteException, BiffException {
         try {
-            if (DataDriven.CheckingFlag("WS_TC_10").contentEquals("Yes")) {
+            if (DataDriven.CheckingFlag("SC_001").contentEquals("Yes")) {
                 LandingPage.LogInFunctionality(driver);
                 HomePage.VerifyHomePageAssert(driver);
             }
