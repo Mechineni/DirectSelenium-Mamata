@@ -36,6 +36,7 @@ public class LandingPageTC extends Browser {
             if (DataDriven.CheckingFlag("SC_001")==true) {
                 LandingPage.LogInFunctionality(driver);
                 HomePage.VerifyHomePageAssert(driver);
+                HomePage.SelectOptionsUnderMenus(driver);
             }
         }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
         catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }

@@ -3,6 +3,7 @@ package GenericLib;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 import java.security.PrivateKey;
@@ -45,4 +46,11 @@ public class ActionKeywords {
         String PageTitle=driver.getTitle();
         return PageTitle;
     }
+    public static void MouseHoverActionPerform(WebDriver driver,By object1,By object2) {
+        Actions action = new Actions(driver);
+        WebElement we = driver.findElement(object1);
+        WebElement we2 = driver.findElement(object2);
+        action.moveToElement(we).moveToElement(we2).click().build().perform();
+    }
+
 }
