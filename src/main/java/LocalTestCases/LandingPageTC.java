@@ -24,7 +24,7 @@ public class LandingPageTC extends Browser {
     ObjectRepository ob = new ObjectRepository();
     static Logger log = Logger.getLogger("Testing Cases");
     private WebDriver driver;
-
+    //test
 
     @BeforeClass
     public void setUp() throws WriteException, IOException, BiffException {  driver = getDriver();  }
@@ -36,8 +36,8 @@ public class LandingPageTC extends Browser {
             if (DataDriven.CheckingFlag("SC_001")==true) {
                 LandingPage.LogInFunctionality(driver);
                 HomePage.VerifyHomePageAssert(driver);
-                HomePage.SelectOptionsUnderQuotes(driver);
-                HomePage.SelectOptionsUnderOrders(driver);
+                HomePage.VerifyDrodownOptionsUnderQuotes(driver);
+                HomePage.VerifyDropdownOptionsUnderOrders(driver);
             }
         }catch (AssertionError e){ String error ="Exception : " +  e.getClass().getSimpleName();	ActualLable(error,"Fail");}
         catch (Exception e){ String error ="Exception : " +  e.getClass().getSimpleName();ActualLable(error,"Fail"); }
