@@ -57,4 +57,9 @@ public class ActionKeywords {
         String ElementText=driver.findElement(object).getText();
         return ElementText;
     }
+    public static void MouseHoverPerform(WebDriver driver,By object1) {
+        Actions action = new Actions(driver);
+        WebElement we = driver.findElement(object1);
+        action.moveToElement(we).build().perform();
+    }
 }
