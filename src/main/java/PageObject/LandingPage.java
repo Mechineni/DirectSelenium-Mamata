@@ -20,7 +20,7 @@ import static GenericLib.DataDriven.TestDataSheet;
 public class LandingPage {
     static private ObjectRepository obje = new ObjectRepository();
     static private WebDriver driver;
-    //PageElements
+    //PageElements that are used below
     static private By LoginIdField = By.id("Login");
     static private By EmailIdField = By.id("UserName");
     static private By PasswordField = By.id("Password");
