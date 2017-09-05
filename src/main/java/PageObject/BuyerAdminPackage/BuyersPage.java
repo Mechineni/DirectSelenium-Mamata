@@ -13,7 +13,7 @@ import static GenericLib.DataDriven.ActualLable;
 import static GenericLib.DataDriven.ExpectedLable;
 
 /**
- * Created by t.mirasipally on 15-Feb-17.
+ * Created by just to check JIRA integrations on 15-Feb-17.
  */
 public class BuyersPage {
 
